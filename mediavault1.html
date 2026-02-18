@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>MediaVault</title>
+  <style>
+    body { font-family: Arial; padding: 20px; background: #f2f2f2; }
+    input, select { padding: 5px; margin: 5px; }
+    ul { list-style: none; padding: 0; }
+    li { background: #fff; margin: 5px 0; padding: 10px; border-radius: 5px; }
+  </style>
+</head>
+<body>
+  <h2>MediaVault</h2>
+
+  <label>Title: </label>
+  <input type="text" id="title" placeholder="Enter media title">
+  <label>Type: </label>
+  <select id="type">
+    <option>Movie</option>
+    <option>TV Show</option>
+    <option>Anime</option>
+    <option>Book</option>
+  </select>
+  <button onclick="addMedia()">Add</button>
+
+  <h3>My Media List:</h3>
+  <ul id="mediaList"></ul>
+
+  <script>
+    const mediaList = document.getElementById('mediaList');
+
+    function addMedia() {
+      const title = document.getElementById('title').value;
+      const type = document.getElementById('type').value;
+
+      if(title.trim() === "") {
+        alert("Please enter a title!");
+        return;
+      }
+
+      const li = document.createElement('li');
+      li.textContent = `${title} (${type})`;
+      mediaList.appendChild(li);
+
+      document.getElementById('title').value = "";
+    }
+  </script>
+</body>
+</html>
